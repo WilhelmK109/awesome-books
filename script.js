@@ -1,13 +1,15 @@
-let books = [
-  {
-    title: 'Biography',
-    author: 'Wilhelm',
-  },
-  {
-    title: 'Auto Biography',
-    author: 'Usman',
-  },
-];
+// Local Storage Starts Here
+let books = [];
+
+books = JSON.parse(window.localStorage.getItem('books'));
+if (!books) {
+  books = []
+}
+
+function saveToLocalStorage() {
+  window.localStorage.setItem('books', JSON.stringify(books));
+}
+// Local Storage Ends Here
 
 // Display Books in List starts Here
 function displayBooks() {
@@ -24,6 +26,7 @@ function displayBooks() {
     booksContainer.childNodes[index].childNodes[4].onclick = () => {
       const newBooks = books.filter((book, innerIndex) => index !== innerIndex);
       books = newBooks;
+      saveToLocalStorage();
       displayBooks();
     };
   });
@@ -44,6 +47,7 @@ function addBookItem(title, author) {
     author,
   };
   books.push(newBook);
+  saveToLocalStorage()
   titleInput.value = '';
   authorInput.value = '';
 }
