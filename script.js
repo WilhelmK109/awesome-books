@@ -11,6 +11,14 @@ function saveToLocalStorage() {
 }
 // Local Storage Ends Here
 
+// Remove Book Function Starts Here
+function removeBook(index) {
+  const newBooks = books.filter((book, innerIndex) => index !== innerIndex);
+  books = newBooks;
+  saveToLocalStorage();
+}
+// Remove Book Function Ends Here
+
 // Display Books in List starts Here
 function displayBooks() {
   const booksContainer = document.getElementById('books-container');
@@ -24,9 +32,7 @@ function displayBooks() {
 
     booksContainer.appendChild(bookItem);
     booksContainer.childNodes[index].childNodes[4].onclick = () => {
-      const newBooks = books.filter((book, innerIndex) => index !== innerIndex);
-      books = newBooks;
-      saveToLocalStorage();
+      removeBook(index);
       displayBooks();
     };
   });
