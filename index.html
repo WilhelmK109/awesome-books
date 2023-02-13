@@ -9,24 +9,14 @@
 </head>
 <body>
   <h1>Awesome Books</h1>
-  <ul>
-    <li>
-      <p>Title</p>
-      <p>Author</p>
-      <button>Remove</button>
-      <hr>
-    </li>
-    <li>
-      <p>Title</p>
-      <p>Author</p>
-      <button>Remove</button>
-      <hr>
-    </li>
-  </ul>
+  <ul id="books-container"></ul>
   <form action="" id="form">
-    <input type="text" class="form-input" placeholder="Title" required>
-    <input type="text" class="form-input" placeholder="Author" required>
-    <button type="submit" class="submit" value="Add">Add</button>
+    <input id="title" type="text" class="form-input" placeholder="Title" required>
+    <input id="author" type="text" class="form-input" placeholder="Author" required>
+    <button id="add-new-book" class="submit" value="Add">Add</button>
   </form>
+
+  <!-- JavaScript File -->
+  <script src="./script.js"></script>
 </body>
 </html>
