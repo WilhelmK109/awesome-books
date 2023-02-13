@@ -3,7 +3,7 @@ let books = [];
 
 books = JSON.parse(window.localStorage.getItem('books'));
 if (!books) {
-  books = []
+  books = [];
 }
 
 function saveToLocalStorage() {
@@ -47,7 +47,7 @@ function addBookItem(title, author) {
     author,
   };
   books.push(newBook);
-  saveToLocalStorage()
+  saveToLocalStorage();
   titleInput.value = '';
   authorInput.value = '';
 }
