@@ -25,13 +25,11 @@ function displayBooks() {
   booksContainer.innerHTML = '';
   books.forEach((book, index) => {
     const bookItem = document.createElement('li');
-    bookItem.innerHTML = `<p>${book.title}</p>
-    <p>${book.author}</p>
-    <button>Remove</button>
-    <hr>`;
+    bookItem.innerHTML = `<p>"${book.title}" by ${book.author}</p>
+    <button>Remove</button>`;
 
     booksContainer.appendChild(bookItem);
-    booksContainer.childNodes[index].childNodes[4].onclick = () => {
+    booksContainer.childNodes[index].childNodes[2].onclick = () => {
       removeBook(index);
       displayBooks();
     };
