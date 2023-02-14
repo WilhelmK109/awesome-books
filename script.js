@@ -1,67 +1,67 @@
-// Local Storage Starts Here
-let books = [];
+/* eslint-disable max-classes-per-file */
 
-books = JSON.parse(window.localStorage.getItem('books'));
-if (!books) {
-  books = [];
+class Book {
+  constructor(title, author, id) {
+    this.title = title;
+    this.author = author;
+    this.id = id;
+  }
 }
 
-function saveToLocalStorage() {
-  window.localStorage.setItem('books', JSON.stringify(books));
-}
-// Local Storage Ends Here
+class BookStore {
+  static getBooks() {
+    let books = [];
+    books = JSON.parse(window.localStorage.getItem('books'));
+    if (!books) {
+      books = [];
+    }
+    return books;
+  }
 
-// Remove Book Function Starts Here
-function removeBook(index) {
-  const newBooks = books.filter((book, innerIndex) => index !== innerIndex);
-  books = newBooks;
-  saveToLocalStorage();
-}
-// Remove Book Function Ends Here
+  static addBook(book) {
+    const books = this.getBooks();
+    books.push(book);
+    window.localStorage.setItem('books', JSON.stringify(books));
+  }
 
-// Display Books in List starts Here
-function displayBooks() {
-  const booksContainer = document.getElementById('books-container');
-  booksContainer.innerHTML = '';
-  books.forEach((book, index) => {
-    const bookItem = document.createElement('li');
-    bookItem.innerHTML = `<p>"${book.title}" by ${book.author}</p>
+  static removeBook(index) {
+    let books = this.getBooks();
+    const newBooks = books.filter((book, innerIndex) => index !== innerIndex);
+    books = newBooks;
+    window.localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
+class UserInterface {
+  static displayBooks() {
+    const books = BookStore.getBooks();
+    const booksContainer = document.getElementById('books-container');
+    booksContainer.innerHTML = '';
+    books.forEach((book, index) => {
+      const bookItem = document.createElement('li');
+      bookItem.innerHTML = `<p>"${book.title}" by ${book.author}</p>
     <button>Remove</button>`;
 
-    booksContainer.appendChild(bookItem);
-    booksContainer.childNodes[index].childNodes[2].onclick = () => {
-      removeBook(index);
-      displayBooks();
-    };
-  });
+      booksContainer.appendChild(bookItem);
+      booksContainer.childNodes[index].childNodes[2].onclick = () => {
+        BookStore.removeBook(index);
+        this.displayBooks();
+      };
+    });
+  }
 }
 
-displayBooks();
+UserInterface.displayBooks();
 
-// Display Books in List ends Here
-
-// Add New Book Starts
+const title = document.getElementById('title');
+const author = document.getElementById('author');
 const addNewBook = document.getElementById('add-new-book');
-const titleInput = document.getElementById('title');
-const authorInput = document.getElementById('author');
-
-function addBookItem(title, author) {
-  const newBook = {
-    title,
-    author,
-  };
-  books.push(newBook);
-  saveToLocalStorage();
-  titleInput.value = '';
-  authorInput.value = '';
-}
 
 addNewBook.addEventListener('click', (e) => {
+  const book = new Book(title.value, author.value, 1);
   e.preventDefault();
-  const title = titleInput.value;
-  const author = authorInput.value;
-  addBookItem(title, author);
-  displayBooks();
+  BookStore.addBook(book);
+  title.value = '';
+  author.value = '';
+  UserInterface.displayBooks();
 });
-
-// Add New Book Ends
