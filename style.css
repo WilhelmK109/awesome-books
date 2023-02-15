@@ -1,23 +1,48 @@
 body {
-  width: 100vw;
   display: flex;
   flex-direction: column;
   font-family: "Lato", sans-serif;
   align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
+  height: 95vh;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  border: 1px solid #000;
+  padding: 0.5em;
+  cursor: pointer;
+  background-color: lightgrey;
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: gray;
+}
+
+.display-none {
+  display: none;
+}
+
+header {
+  border: 2px solid #000;
+  width: 97.5%;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid #000;
-  width: 100vw;
-}
-
-.navbar-brand {
-  margin-left: 20px;
 }
 
 .nav-menu {
@@ -36,25 +61,51 @@ body {
   cursor: pointer;
 }
 
+.nav-list:hover {
+  color: gray;
+  font-weight: 700;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
 .pad-right {
   padding: 8px;
   border-right: 2px solid #000;
 }
 
-/* li {
-  padding: 0%;
-  justify-content: center;
+.all-books {
+  width: 97.5%;
+  margin: auto;
+  text-align: center;
   align-items: center;
-  border: 2px solid #000;
-  list-style: none;
-  width: 40%;
-} */
+}
 
-/* li:nth-child(odd) {
-  background-color: gray;
-} */
+.all-books ul {
+  border: 2px solid #000;
+}
+
+.all-books ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  text-transform: capitalize;
+}
+
+.all-books ul li:nth-child(odd) {
+  background-color: lightgray;
+}
+
+.new-book {
+  width: 50%;
+  text-align: center;
+}
 
 form {
+  padding: 2em;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,6 +114,7 @@ form {
 .form-input {
   margin-bottom: 10px;
   padding: 4px;
+  width: 100%;
 }
 
 .submit {
@@ -77,11 +129,12 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 60%;
 }
 
 footer {
   border: 2px solid #000;
-  display: flex;
-  justify-content: flex-start;
-  width: 100vw;
+  width: 95%;
+  padding: 1em;
+  margin-top: auto;
 }
