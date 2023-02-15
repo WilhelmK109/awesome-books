@@ -65,3 +65,38 @@ addNewBook.addEventListener('click', (e) => {
   author.value = '';
   UserInterface.displayBooks();
 });
+
+const allBooks = document.getElementById('all-books');
+const newBook = document.getElementById('create-new-book');
+const contact = document.getElementById('contact');
+
+const navItemList = document.getElementById('nav-item-list');
+const navItemAddNew = document.getElementById('nav-item-add-new');
+const navItemContact = document.getElementById('nav-item-contact');
+
+navItemList.addEventListener('click', () => {
+  allBooks.className = 'all-books';
+  newBook.className = 'display-none';
+  contact.className = 'display-none';
+  navItemList.classList.add('font-weight-bold');
+  navItemAddNew.classList.remove('font-weight-bold');
+  navItemContact.classList.remove('font-weight-bold');
+});
+
+navItemAddNew.addEventListener('click', () => {
+  newBook.className = 'new-book';
+  allBooks.className = 'display-none';
+  contact.className = 'display-none';
+  navItemAddNew.classList.add('font-weight-bold');
+  navItemList.classList.remove('font-weight-bold');
+  navItemContact.classList.remove('font-weight-bold');
+});
+
+navItemContact.addEventListener('click', () => {
+  contact.className = 'contact-info';
+  newBook.className = 'display-none';
+  allBooks.className = 'display-none';
+  navItemContact.classList.add('font-weight-bold');
+  navItemAddNew.classList.remove('font-weight-bold');
+  navItemList.classList.remove('font-weight-bold');
+});
