@@ -121,9 +121,7 @@ You can deploy this project using:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **User can Add New Book**
-- **User can Remove a Book**
-- **Data is being stored in localStorage**
+- **Convert our program to single page application**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
